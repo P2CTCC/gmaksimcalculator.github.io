@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор Процентов</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculator-card">
+            <h6>Проект Максима Гордеева</h6>
+            <h1>Калькулятор Процентов</h1>
+            <div class="mode-switcher">
+                <button class="mode-btn active" data-mode="simple">Простой</button>
+                <button class="mode-btn" data-mode="compound">Сложный</button>
+                <button class="mode-btn" data-mode="recipe">Рецепт</button>
+            </div>
+
+            <div id="simpleMode" class="mode-content active">
+                <div class="input-group">
+                    <input type="text" id="inputField" placeholder="Например: 1243 - 7%" autocomplete="off">
+                </div>
+            </div>
+
+            <div id="compoundMode" class="mode-content">
+                <div class="input-group">
+                    <label>Начальная сумма</label>
+                    <input type="number" id="principal" placeholder="0" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label>Процент за период (%)</label>
+                    <input type="number" id="rate" placeholder="0" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label>Количество периодов</label>
+                    <input type="number" id="time" placeholder="0" autocomplete="off">
+                </div>
+                <button id="calculateCompound" class="action-btn">Рассчитать</button>
+            </div>
+
+            <div id="recipeMode" class="mode-content">
+                <div id="ingredientsList">
+                    <!-- Dynamic ingredients will be added here -->
+                    <div class="ingredient-row">
+                        <input type="text" placeholder="Ингредиент" class="ingredient-name">
+                        <input type="number" placeholder="Граммы" class="ingredient-weight">
+                    </div>
+                </div>
+                <button id="addIngredient" class="secondary-btn">+ Добавить ингредиент</button>
+
+                <div class="input-group" style="margin-top: 20px;">
+                    <label>Желаемая общая масса (г)</label>
+                    <input type="number" id="targetWeight" placeholder="0" autocomplete="off">
+                </div>
+                <button id="calculateRecipe" class="action-btn">Пересчитать</button>
+            </div>
+
+            <div class="result-area" id="resultArea">
+                <div class="result-value" id="resultValue"></div>
+                <div class="result-explanation" id="resultExplanation"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
