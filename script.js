@@ -115,21 +115,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function calculateCompound() {
         const principal = parseFloat(document.getElementById('principal').value);
         const rate = parseFloat(document.getElementById('rate').value);
-        const time = parseFloat(document.getElementById('time').value);
+        const months = parseFloat(document.getElementById('time').value);
 
-        if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
+        if (isNaN(principal) || isNaN(rate) || isNaN(months)) {
             showError("Пожалуйста, заполните все поля корректными числами");
             return;
         }
+        if (months < 1) {
+            showError("Срок должен быть не менее 1 месяца");
+            return;
+        }
 
-        // Formula: A = P * (1 + r/100)^t
-        const amount = principal * Math.pow((1 + rate / 100), time);
+        // Formula: A = P * (1 + r/100/12)^m — ежемесячная капитализация
+        const amount = principal * Math.pow((1 + rate / 100 / 12), months);
         const profit = amount - principal;
 
         const explanation = `
             Начальная сумма: ${formatNumber(principal)}<br>
-            Процентная ставка: ${rate}%<br>
-            Период: ${time}<br><br>
+            Годовая ставка: ${rate}%<br>
+            Срок: ${months} мес.<br><br>
             Итоговая сумма: ${formatNumber(amount)}<br>
             Накопленный доход: ${formatNumber(profit)}
         `;
